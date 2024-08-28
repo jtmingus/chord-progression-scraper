@@ -1,6 +1,6 @@
 """Script to verify any chord progressions missed by extract_chords_v2.
 
-This script was duplicated from extract_chords_v2.py and was only used as final verification that all 4-chord progressions were found.
+This script was duplicated from extract_chords_v2.py and was used as final verification that all 4-chord progressions were found. This script also builds the entire chord tree.
 """
 
 import requests
