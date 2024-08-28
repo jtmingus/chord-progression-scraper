@@ -13,6 +13,9 @@ from chord_tree import ChordTreeNode
 import password
 import json
 
+CHORD_PROGRESSION_LENGTH = 4
+MIN_CHORD_PROBABILITY = 0.005
+
 
 def getAuthToken():
     headers = {"Content-Type": "application/json"}
@@ -113,7 +116,11 @@ chordsToProcess = []
 while len(q):
     node, level = q.pop(0)
     # print(node)
-    if level < 4 and float(node.probability) >= 0.005 and len(node.children) == 0:
+    if (
+        level < CHORD_PROGRESSION_LENGTH
+        and float(node.probability) >= MIN_CHORD_PROBABILITY
+        and len(node.children) == 0
+    ):
         print("Need to process {}".format(node.path))
         chordsToProcess.append([node.chord_ID, node.html, node.probability, node.path])
 
@@ -130,7 +137,7 @@ while len(chordsToProcess):
     id, html, probability, path = chord
     level = len(path.split(","))
 
-    if level >= 4:
+    if level >= CHORD_PROGRESSION_LENGTH:
         processed.writeChord(chord)
         continue
 
