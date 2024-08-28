@@ -9,7 +9,7 @@ from processed import Processed
 from to_process import ToProcess
 import time
 import traceback
-from chord_tree import ChordTreeNode
+from chord_tree_node import ChordTreeNode
 import password
 import json
 
